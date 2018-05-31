@@ -20,9 +20,6 @@ import java.util.stream.Collectors;
 
 /**
  * Spring-фильтр для логирования HTTP-request & HTTP-response
- * вместе с заголовками и данными внутри Body.
- * Включается функуционал установкой параметра requestResponseLogging в положение true 
- * (параметр вынесен в application.properties).
  */
 @Component
 public class LoggingFilter extends OncePerRequestFilter {
@@ -35,14 +32,15 @@ public class LoggingFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if (isLoggingEnabled) {
-            requestCounter.incrementAndGet();
-            final StringBuffer sbRequest = new StringBuffer("\nRequest\n----------------------------");
-            final StringBuffer sbResponse = new StringBuffer("\nResponse\n----------------------------");
+            int counter = requestCounter.incrementAndGet();
+
+            final StringBuffer sbRequest = new StringBuffer("Request\n----------------------------");
+            final StringBuffer sbResponse = new StringBuffer("Response\n----------------------------");
 
             ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper(request);
             ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(response);
 
-            sbRequest.append("\nID: ").append(requestCounter);
+            sbRequest.append("\nID: ").append(counter);
             sbRequest.append("\nAddress: ").append(requestWrapper.getRequestURL());
             sbRequest.append("\nHttp-Method: ").append(requestWrapper.getMethod());
             if (requestWrapper.getParameterMap().size() > 0) sbRequest.append("\nURL options: ")
@@ -54,7 +52,7 @@ public class LoggingFilter extends OncePerRequestFilter {
 
             filterChain.doFilter(requestWrapper, responseWrapper);
 
-            sbResponse.append("\nID: ").append(requestCounter);
+            sbResponse.append("\nID: ").append(counter);
             sbResponse.append("\nResponse-Code: ").append(responseWrapper.getStatusCode());
             sbResponse.append("\nEncoding: ").append(responseWrapper.getCharacterEncoding());
             sbResponse.append("\nContent-Type: ").append(responseWrapper.getContentType());
