@@ -20,8 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * Spring-фильтр для логирования HTTP-request & HTTP-response
- * представляет собой фильтр, который логирует HTTP Request и HTTP Response 
- * вместе с заголовками и данными внутри Body. 
+ * вместе с заголовками и данными внутри Body.
  * Включается функуционал установкой параметра requestResponseLogging в положение true 
  * (параметр вынесен в application.properties).
  */
