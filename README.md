@@ -46,24 +46,26 @@
 На уровне каждого профиля задаем переменные** `logstash.port`, `logger.console.tresholdFilter`, `logger.socket.tresholdFilter`.
 
 
-	<profiles>
-		<profile>
-			<id>local</id>
-			<properties>
-				<logstash.port>10000</logstash.port>
-				<logger.console.tresholdFilter>ALL</logger.console.tresholdFilter>
-				<logger.socket.tresholdFilter>OFF</logger.socket.tresholdFilter>
-			</properties>
-		</profile>
-		<profile>
-        	<id>dev</id>
-        	<properties>
-        		<logstash.port>10001</logstash.port>
-        		<logger.console.tresholdFilter>OFF</logger.console.tresholdFilter>
-        		<logger.socket.tresholdFilter>ALL</logger.socket.tresholdFilter>
-        	</properties>
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <logstash.port>10000</logstash.port>
+                <logger.console.tresholdFilter>ALL</logger.console.tresholdFilter>
+                <logger.socket.tresholdFilter>OFF</logger.socket.tresholdFilter>
+            </properties>
         </profile>
-	</profiles>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <logstash.port>10001</logstash.port>
+                <logger.console.tresholdFilter>OFF</logger.console.tresholdFilter>
+                <logger.socket.tresholdFilter>ALL</logger.socket.tresholdFilter>
+            </properties>
+        </profile>
+    </profiles>
+    
 	
 * `logstash.port` - порт, на который нужно отправлять логи.
 * `logger.console.tresholdFilter` - значение задаёт уровень фильтрации логов, выводимых на консоль. В нашем случае `ALL` означает, что лог-записи всех уровней будут выводиться в консольный аппендер.
