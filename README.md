@@ -56,13 +56,13 @@
 			</properties>
 		</profile>
 		<profile>
-        		<id>dev</id>
-        		<properties>
-        			<logstash.port>10001</logstash.port>
-        			<logger.console.tresholdFilter>OFF</logger.console.tresholdFilter>
-        			<logger.socket.tresholdFilter>ALL</logger.socket.tresholdFilter>
-        		</properties>
-        		</profile>
+        	<id>dev</id>
+        	<properties>
+        		<logstash.port>10001</logstash.port>
+        		<logger.console.tresholdFilter>OFF</logger.console.tresholdFilter>
+        		<logger.socket.tresholdFilter>ALL</logger.socket.tresholdFilter>
+        	</properties>
+        </profile>
 	</profiles>
 	
 * `logstash.port` - порт, на который нужно отправлять логи.
